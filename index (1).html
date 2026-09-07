@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deadly Orange Socks — Journeys: Ohio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #12140F;
+    --bg-alt: #191C14;
+    --pine: #1F2A1C;
+    --dawn: #E8935A;
+    --rust: #C97C4B;
+    --parchment: #EDE6D6;
+    --muted: #8B9483;
+    --line: rgba(237,230,214,0.14);
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--parchment);
+    font-family:'Work Sans', sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{ background:var(--dawn); color:var(--bg); }
+
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:400; letter-spacing:-0.01em; }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--dawn);
+  }
+
+  a{ color:inherit; }
+
+  /* ---- HERO ---- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    align-items:flex-end;
+    background:#000;
+  }
+  .hero img{
+    position:absolute;
+    inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    opacity:0.82;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(18,20,15,0.15) 0%, rgba(18,20,15,0.35) 45%, rgba(18,20,15,0.96) 92%);
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    padding:6vh 6vw 8vh;
+    max-width:900px;
+  }
+  .hero-content .eyebrow{ margin-bottom:1.2rem; }
+  .hero-content h1{
+    font-size:clamp(2.8rem, 9vw, 6.5rem);
+    line-height:0.98;
+    color:var(--parchment);
+  }
+  .hero-content h1 em{
+    font-style:italic;
+    color:var(--dawn);
+  }
+  .hero-sub{
+    margin-top:1.4rem;
+    font-size:clamp(1rem, 2vw, 1.15rem);
+    color:var(--muted);
+    max-width:34ch;
+  }
+  .hero-logo{
+    display:block;
+    width:100%;
+    max-width:560px;
+    height:auto;
+    border-radius:14px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  }
+  .scroll-cue{
+    position:absolute;
+    bottom:2.2rem; left:6vw;
+    z-index:2;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.15em;
+    color:var(--muted);
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+  }
+  .scroll-cue .dash{
+    width:28px; height:1px; background:var(--muted);
+    position:relative; overflow:hidden;
+  }
+  .scroll-cue .dash::after{
+    content:""; position:absolute; inset:0;
+    background:var(--dawn);
+    animation:pulse-dash 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse-dash{
+    0%,100%{ transform:translateX(-100%); }
+    50%{ transform:translateX(100%); }
+  }
+
+  /* ---- CONTOUR / PULSE SPINE ---- */
+  .spine-wrap{
+    position:relative;
+    height:140px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--bg);
+  }
+  .spine-wrap svg{ width:100%; max-width:1200px; height:70px; }
+  .spine-path{
+    fill:none;
+    stroke:var(--dawn);
+    stroke-width:1.4;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:2000;
+    stroke-dashoffset:2000;
+    transition:stroke-dashoffset 1.6s cubic-bezier(.16,.8,.28,1);
+  }
+  .spine-wrap.in-view .spine-path{ stroke-dashoffset:0; }
+
+  /* ---- SECTIONS ---- */
+  section{
+    padding:5.5rem 6vw;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .intro{
+    max-width:680px;
+  }
+  .intro h2{
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom:1.6rem;
+  }
+  .intro p{
+    font-size:1.05rem;
+    color:#D8D1C0;
+    margin-bottom:1.1rem;
+  }
+  .intro p:last-child{ margin-bottom:0; }
+
+  .meta-row{
+    display:flex; gap:2.5rem; flex-wrap:wrap;
+    margin-top:2.6rem;
+    padding-top:2rem;
+    border-top:1px solid var(--line);
+  }
+  .meta-item .eyebrow{ margin-bottom:0.4rem; }
+  .meta-item div.val{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.92rem;
+    color:var(--parchment);
+  }
+
+  /* ---- TRACK SECTION ---- */
+  .track-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:1.5rem;
+    margin-bottom:2.8rem;
+  }
+  .track-head h2{
+    font-size:clamp(2rem, 5vw, 3.2rem);
+  }
+  .track-status{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+    border:1px solid var(--line);
+    padding:0.5rem 0.9rem;
+    white-space:nowrap;
+  }
+  .track-status .dot{
+    display:inline-block;
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--dawn);
+    margin-right:0.5rem;
+  }
+
+  .track-desc{
+    max-width:640px;
+    color:#D8D1C0;
+    font-size:1.02rem;
+    margin-bottom:3rem;
+  }
+  .track-desc strong{ color:var(--parchment); font-weight:500; }
+
+  /* layer tags */
+  .layers{
+    display:flex; flex-wrap:wrap; gap:0.6rem;
+    margin-bottom:3.5rem;
+  }
+  .layers span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    color:var(--dawn);
+    border:1px solid rgba(232,147,90,0.35);
+    padding:0.35rem 0.75rem;
+    border-radius:2px;
+  }
+
+  /* gallery - editorial asymmetric grid */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    grid-auto-rows:14vw;
+    gap:0.8rem;
+  }
+  .gallery figure{
+    overflow:hidden;
+    position:relative;
+    background:var(--pine);
+  }
+  .gallery img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+    filter:saturate(0.92) contrast(1.03);
+    transition:transform 1.2s cubic-bezier(.16,.8,.28,1);
+  }
+  .gallery figure:hover img{ transform:scale(1.045); }
+  .gallery figcaption{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:0.7rem 0.9rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.06em;
+    color:var(--parchment);
+    background:linear-gradient(0deg, rgba(0,0,0,0.65), transparent);
+    opacity:0;
+    transition:opacity 0.4s ease;
+  }
+  .gallery figure:hover figcaption{ opacity:1; }
+
+  .g1{ grid-column:1/4; grid-row:1/3; }
+  .g2{ grid-column:4/7; grid-row:1/2; }
+  .g3{ grid-column:4/6; grid-row:2/3; }
+  .g4{ grid-column:6/7; grid-row:2/3; }
+  .g5{ grid-column:1/7; grid-row:3/4; }
+
+  @media (max-width:760px){
+    .gallery{ grid-template-columns:repeat(2,1fr); grid-auto-rows:38vw; }
+    .g1{ grid-column:1/3; grid-row:1/2; }
+    .g2{ grid-column:1/2; grid-row:2/3; }
+    .g3{ grid-column:2/3; grid-row:2/3; }
+    .g4{ grid-column:1/2; grid-row:3/4; }
+    .g5{ grid-column:2/3; grid-row:3/4; }
+  }
+
+  /* nine-photo bento layout for Track Four */
+  .gallery9{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    grid-auto-rows:11vw;
+    gap:0.8rem;
+  }
+  .h1{ grid-column:1/4; grid-row:1/3; }
+  .h2{ grid-column:4/7; grid-row:1/2; }
+  .h3{ grid-column:4/6; grid-row:2/3; }
+  .h4{ grid-column:6/7; grid-row:2/3; }
+  .h5{ grid-column:1/3; grid-row:3/4; }
+  .h6{ grid-column:3/5; grid-row:3/4; }
+  .h7{ grid-column:5/7; grid-row:3/4; }
+  .h8{ grid-column:1/4; grid-row:4/5; }
+  .h9{ grid-column:4/7; grid-row:4/5; }
+  @media (max-width:760px){
+    .gallery9{ grid-template-columns:repeat(2,1fr); grid-auto-rows:38vw; }
+    .h1{ grid-column:1/3; grid-row:1/2; }
+    .h2{ grid-column:1/2; grid-row:2/3; }
+    .h3{ grid-column:2/3; grid-row:2/3; }
+    .h4{ grid-column:1/2; grid-row:3/4; }
+    .h5{ grid-column:2/3; grid-row:3/4; }
+    .h6{ grid-column:1/2; grid-row:4/5; }
+    .h7{ grid-column:2/3; grid-row:4/5; }
+    .h8{ grid-column:1/3; grid-row:5/6; }
+    .h9{ grid-column:1/3; grid-row:6/7; }
+  }
+
+  /* alt sub-block */
+  .alt-block{
+    margin-top:3.5rem;
+    padding-top:3rem;
+    border-top:1px dashed var(--line);
+  }
+  .alt-label{
+    display:flex; align-items:center; gap:0.7rem;
+    margin-bottom:1.2rem;
+  }
+  .alt-label .eyebrow{ margin-bottom:0; }
+  .alt-label .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    color:var(--rust);
+    border:1px solid rgba(201,124,75,0.4);
+    padding:0.25rem 0.6rem;
+  }
+
+  /* whiskey pairing placeholder */
+  .pairing{
+    margin-top:1.6rem;
+    padding:1rem 1.2rem;
+    border-left:2px solid var(--dawn);
+    background:rgba(232,147,90,0.05);
+  }
+  .pairing-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    color:var(--dawn);
+    margin-bottom:0.3rem;
+  }
+  .pairing-note{
+    font-family:'Work Sans', sans-serif;
+    font-size:0.9rem;
+    color:var(--muted);
+    font-style:italic;
+  }
+
+  /* waveform placeholder / listen block */
+  .listen-block{
+    margin-top:3.2rem;
+    border:1px solid var(--line);
+    padding:2rem;
+    display:flex;
+    align-items:center;
+    gap:1.6rem;
+    flex-wrap:wrap;
+  }
+  .waveform{ flex:1; min-width:220px; height:44px; }
+  .waveform svg{ width:100%; height:100%; }
+  .waveform rect{ fill:var(--muted); opacity:0.55; }
+  .listen-note{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    color:var(--muted);
+    letter-spacing:0.04em;
+  }
+
+  /* ---- UPCOMING TRACKS LIST ---- */
+  .upcoming{ background:var(--bg-alt); }
+  .upcoming h2{
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom:2.8rem;
+  }
+  .track-list{
+    display:flex; flex-direction:column;
+  }
+  .track-row{
+    display:grid;
+    grid-template-columns:2.5rem 1fr auto;
+    gap:1.5rem;
+    align-items:baseline;
+    padding:1.4rem 0;
+    border-bottom:1px solid var(--line);
+  }
+  .track-row:first-child{ border-top:1px solid var(--line); }
+  .track-row .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    color:var(--muted);
+  }
+  .track-row .name{
+    font-family:'Fraunces', serif;
+    font-size:1.35rem;
+    color:var(--parchment);
+  }
+  .track-row .note{
+    font-size:0.92rem;
+    color:var(--muted);
+    font-family:'Work Sans', sans-serif;
+    grid-column:2/3;
+  }
+  .track-row .stat{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--rust);
+    white-space:nowrap;
+  }
+  @media (max-width:600px){
+    .track-row{ grid-template-columns:2rem 1fr; }
+    .track-row .stat{ grid-column:2/3; margin-top:0.3rem; }
+  }
+
+  /* ---- ABOUT ---- */
+  .about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:4rem;
+    align-items:start;
+  }
+  @media (max-width:800px){ .about{ grid-template-columns:1fr; gap:2.5rem; } }
+  .about h3{ font-size:1.5rem; margin-bottom:1rem; color:var(--dawn); }
+  .about p{ color:#D8D1C0; font-size:0.98rem; margin-bottom:1rem; }
+
+  /* ---- FOOTER ---- */
+  footer{
+    padding:3.5rem 6vw 3rem;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:1.2rem;
+  }
+  footer .eyebrow{ color:var(--muted); }
+  footer .name{ font-family:'Fraunces', serif; font-size:1.1rem; }
+  .foot-links{ display:flex; gap:1.5rem; font-family:'IBM Plex Mono', monospace; font-size:0.75rem; }
+  .foot-links a{ color:var(--muted); text-decoration:none; border-bottom:1px solid transparent; transition:color .3s, border-color .3s; }
+  .foot-links a:hover{ color:var(--dawn); border-color:var(--dawn); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <img src="images/hero-ridge-mist.jpg" alt="A runner disappears into fog along a ridge trail at dawn">
+  <div class="hero-content">
+    <div class="eyebrow">Behind the Sound presents</div>
+    <img src="images/logo-dos-001.png" alt="Deadly Orange Socks — Journeys, DOS—001" class="hero-logo">
+  </div>
+  <div class="scroll-cue"><span class="dash"></span> scroll</div>
+</section>
+
+<div class="spine-wrap" id="spine1">
+  <svg viewBox="0 0 1200 70" preserveAspectRatio="none">
+    <path class="spine-path" d="M0,35 C60,35 80,10 120,10 C160,10 170,60 210,60 C260,60 270,20 320,20 L420,20 C450,20 460,45 490,45 C520,45 525,15 555,15 C580,15 585,50 610,50 L720,50 C760,50 770,25 800,25 C830,25 835,55 865,55 C900,55 905,20 940,20 L1050,20 C1090,20 1100,35 1140,35 L1200,35"/>
+  </svg>
+</div>
+
+<section class="intro">
+  <div class="eyebrow">The idea</div>
+  <h2>It started the way most good ideas start &mdash; by accident.</h2>
+  <p>Brian has always been fascinated by music, sounds, and nature. Since the advent of the iPhone, he's been using the voice memo app to record interesting sounds he came across &mdash; the most intriguing were always water moving, or insects and birds. He has over 100 memos with snippets of sound from the last 20 years. Over the last few years, running the trails and streets around Troy, it occurred to him that the world he moved through every morning already sounded like music: crickets keeping time, gravel setting a rhythm, a train passing through like a held note. Once he heard it that way, he couldn't unhear it. He started consistently recording these sounds &mdash; nothing fancy, just an iPhone tucked into his Spibelt, picking up whatever a run happened to hand him that day &mdash; and slowly those recordings turned into something closer to songs. He calls the project Deadly Orange Socks.</p>
+  <p>With one small exception &mdash; a sample from his good friend Ted Hajnasiewicz's song &ldquo;Star Gazer&rdquo; &mdash; every sound on this EP came from somewhere real: the woods at Englewood MetroPark, a quiet stretch of Duke Park, Hobart Nature Reserve, the streets of downtown Troy, the levee in the rain. Nothing borrowed, nothing pulled from a library. Just one runner, paying closer attention than usual.</p>
+  <div class="meta-row">
+    <div class="meta-item"><div class="eyebrow">Artist</div><div class="val">Deadly Orange Socks</div></div>
+    <div class="meta-item"><div class="eyebrow">Series</div><div class="val">Journeys</div></div>
+    <div class="meta-item"><div class="eyebrow">Chapter</div><div class="val">DOS — 001</div></div>
+    <div class="meta-item"><div class="eyebrow">Status</div><div class="val">In production</div></div>
+  </div>
+  <p style="margin-top:2rem; color:#D8D1C0; font-size:0.98rem;">Brian is a lover of whiskey and has picked a pairing based on his experience with various whiskeys. Each pairing is meant to be matched with a track. The reason behind the pairing is given below each track description. Of course, these are only suggestions &mdash; you may find one better suited to your tastes.</p>
+</section>
+
+<div class="spine-wrap" id="spine2">
+  <svg viewBox="0 0 1200 70" preserveAspectRatio="none">
+    <path class="spine-path" d="M0,35 L100,35 C110,35 112,12 122,12 C132,12 134,58 144,58 C154,58 156,20 166,20 C176,20 178,50 188,50 L280,50 C290,50 292,15 302,15 C312,15 314,55 324,55 L900,55 C910,55 912,18 922,18 C932,18 934,52 944,52 L1200,45"/>
+  </svg>
+</div>
+
+<section class="track">
+  <div class="track-head">
+    <h2>Trail</h2>
+  </div>
+  <p class="track-desc">This track is a trail run, built from clips recorded around the Troy area &mdash; specifically Englewood MetroPark, Duke Park, and Hobart Nature Reserve. It takes the listener on a trip through the woods in the early morning. The runner travels over gravel, stone, and packed earth. During the journey, they hear the sounds of nature filling the air &mdash; crickets, birds, cicadas, and other creatures creating the atmosphere.</p>
+  <div class="pairing">
+    <div class="pairing-label">Pairing &mdash; Buffalo Trace</div>
+    <div class="pairing-note">No frills, no surprises &mdash; just a steady pour for a steady morning on familiar ground.</div>
+  </div>
+  <div class="layers">
+    <span>Englewood MetroPark</span>
+    <span>Duke Park</span>
+    <span>Hobart Nature Reserve</span>
+    <span>gravel · stone · packed earth</span>
+    <span>crickets · birds · cicadas</span>
+  </div>
+  <div class="gallery">
+    <figure class="g1"><img src="images/trail-gravel-climb.jpg" alt="Runner climbing a gravel path at sunrise, blue compression sleeves"><figcaption>sunrise · gravel climb</figcaption></figure>
+    <figure class="g2"><img src="images/trail-action-orange.jpg" alt="Runner in orange shirt moving through the woods"><figcaption>mid-run · orange</figcaption></figure>
+    <figure class="g3"><img src="images/trail-deer-mist.jpg" alt="Deer standing in a misty field at sunrise"><figcaption>the field, before the trail</figcaption></figure>
+    <figure class="g4"><img src="images/trail-deer-pair.jpg" alt="Two young bucks watching from tall grass"><figcaption>watched</figcaption></figure>
+    <figure class="g5"><img src="images/trail-action-red.jpg" alt="Runner in red shirt moving through golden autumn woods"><figcaption>golden hour, Troy OH</figcaption></figure>
+  </div>
+
+  <div class="listen-block">
+    <div class="waveform">
+      <svg viewBox="0 0 400 44" preserveAspectRatio="none">
+        <!-- static generated waveform bars -->
+        <g id="wf"></g>
+      </svg>
+    </div>
+    <div class="listen-note">Audio not yet released &mdash; check back as the EP nears completion.</div>
+  </div>
+</section>
+
+<div class="spine-wrap" id="spine3">
+  <svg viewBox="0 0 1200 70" preserveAspectRatio="none">
+    <path class="spine-path" d="M0,35 C60,35 80,10 120,10 C160,10 170,60 210,60 C260,60 270,20 320,20 L420,20 C450,20 460,45 490,45 C520,45 525,15 555,15 C580,15 585,50 610,50 L720,50 C760,50 770,25 800,25 C830,25 835,55 865,55 C900,55 905,20 940,20 L1050,20 C1090,20 1100,35 1140,35 L1200,35"/>
+  </svg>
+</div>
+
+<section class="track">
+  <div class="track-head">
+    <h2>Stream</h2>
+  </div>
+  <p class="track-desc">On this track, the runner finds themselves running a trail that passes over and near several sections of the same stream. Each part of the stream has its own unique sound, including a small waterfall. Recorded primarily at Englewood MetroPark.</p>
+  <div class="pairing">
+    <div class="pairing-label">Pairing &mdash; Jefferson's Ocean</div>
+    <div class="pairing-note">Aged at sea, shaped by water in motion &mdash; felt like the obvious match for a track built entirely around a stream.</div>
+  </div>
+  <div class="layers">
+    <span>Englewood MetroPark</span>
+    <span>stream · multiple sections</span>
+    <span>waterfall</span>
+  </div>
+  <!--
+    PHOTOS: to add photos here, uncomment this block and:
+    1. Put your image files in the /images folder next to this index.html
+    2. Replace "images/your-photo.jpg" with your actual filename
+    3. Replace the alt text (for screen readers) and the short caption
+    4. Use 3-5 photos - copy the <figure> line to add more, delete to use fewer
+
+  <div class="gallery">
+    <figure class="g1"><img src="images/your-photo-1.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g2"><img src="images/your-photo-2.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g3"><img src="images/your-photo-3.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g4"><img src="images/your-photo-4.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g5"><img src="images/your-photo-5.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+  </div>
+  -->
+</section>
+
+<div class="spine-wrap" id="spine4">
+  <svg viewBox="0 0 1200 70" preserveAspectRatio="none">
+    <path class="spine-path" d="M0,35 L100,35 C110,35 112,12 122,12 C132,12 134,58 144,58 C154,58 156,20 166,20 C176,20 178,50 188,50 L280,50 C290,50 292,15 302,15 C312,15 314,55 324,55 L900,55 C910,55 912,18 922,18 C932,18 934,52 944,52 L1200,45"/>
+  </svg>
+</div>
+
+<section class="track">
+  <div class="track-head">
+    <h2>Recovery</h2>
+  </div>
+  <p class="track-desc">This track brings the runner to a place of rest. They've found an area that's inviting and decide to take a short break &mdash; maybe a sip of water, a few recovery breaths. While re-centering, the runner is immersed in bird calls, insects, and other nature sounds. Recorded in the early morning on the trail at Englewood MetroPark.</p>
+  <div class="pairing">
+    <div class="pairing-label">Pairing &mdash; Woodford Double Oaked</div>
+    <div class="pairing-note">Extra time in the barrel gives it a rounder, softer edge &mdash; the same thing a good pause mid-run does for you.</div>
+  </div>
+  <div class="layers">
+    <span>Englewood MetroPark</span>
+    <span>bird calls</span>
+    <span>insects</span>
+    <span>rest · recovery breaths</span>
+  </div>
+  <!--
+    PHOTOS: to add photos here, uncomment this block and:
+    1. Put your image files in the /images folder next to this index.html
+    2. Replace "images/your-photo.jpg" with your actual filename
+    3. Replace the alt text (for screen readers) and the short caption
+    4. Use 3-5 photos - copy the <figure> line to add more, delete to use fewer
+
+  <div class="gallery">
+    <figure class="g1"><img src="images/your-photo-1.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g2"><img src="images/your-photo-2.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g3"><img src="images/your-photo-3.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g4"><img src="images/your-photo-4.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g5"><img src="images/your-photo-5.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+  </div>
+  -->
+</section>
+
+<div class="spine-wrap" id="spine5">
+  <svg viewBox="0 0 1200 70" preserveAspectRatio="none">
+    <path class="spine-path" d="M0,20 L150,20 C170,20 175,55 195,55 C215,55 220,15 240,15 L500,15 C520,15 525,50 545,50 C565,50 570,25 590,25 L750,25 C780,25 790,60 820,60 C850,60 855,10 885,10 L1050,10 C1075,10 1080,40 1105,40 L1200,35"/>
+  </svg>
+</div>
+
+<section class="track">
+  <div class="track-head">
+    <h2>Tarmac</h2>
+  </div>
+  <p class="track-desc">Our runner is out and about on the tarmac, hearing their hometown come to life in the early morning, Troy, Ohio. The footfalls have a different sound &mdash; the pattern is similar to the trail but changes based on the surroundings. The runner finds themselves listening to insects interspersed with the hum of automobiles, and even a train passing by. All aspects of this track were recorded in Troy.</p>
+  <div class="pairing">
+    <div class="pairing-label">Pairing &mdash; New Riff Straight 8yr</div>
+    <div class="pairing-note">Straightforward and well-built, the way a town run just gets the job done without asking much of you.</div>
+  </div>
+  <div class="layers">
+    <span>Troy, Ohio</span>
+    <span>tarmac footfalls</span>
+    <span>insects</span>
+    <span>automobiles</span>
+    <span>train</span>
+  </div>
+  <!--
+    PHOTOS: to add photos here, uncomment this block and:
+    1. Put your image files in the /images folder next to this index.html
+    2. Replace "images/your-photo.jpg" with your actual filename
+    3. Replace the alt text (for screen readers) and the short caption
+    4. Use 3-5 photos - copy the <figure> line to add more, delete to use fewer
+
+  <div class="gallery">
+    <figure class="g1"><img src="images/your-photo-1.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g2"><img src="images/your-photo-2.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g3"><img src="images/your-photo-3.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g4"><img src="images/your-photo-4.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g5"><img src="images/your-photo-5.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+  </div>
+  -->
+  <div class="alt-block">
+    <div class="alt-label">
+      <div class="eyebrow">Tarmac Ted</div>
+    </div>
+    <p class="track-desc">Our runner starts off running with music, then decides to listen to nature's orchestra instead and pauses the song &mdash; &ldquo;Star Gazer,&rdquo; a great track by Ted Hajnasiewicz &mdash; to complete the run. As they finish, they turn the music back on.</p>
+    <div class="pairing">
+      <div class="pairing-label">Pairing &mdash; New Riff Straight 8yr</div>
+      <div class="pairing-note">Same pour as Tarmac, since it's the same run at heart &mdash; though this one might deserve a single big cube, for the interruption.</div>
+    </div>
+    <div class="layers">
+      <span>&ldquo;Star Gazer&rdquo; &mdash; Ted Hajnasiewicz</span>
+      <span>music intro / outro</span>
+      <span>shared body with Track Four</span>
+    </div>
+    <!--
+      PHOTOS: same instructions as above - uncomment and fill in your own images/filenames
+
+    <div class="gallery">
+      <figure class="g1"><img src="images/your-photo-1.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+      <figure class="g2"><img src="images/your-photo-2.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+      <figure class="g3"><img src="images/your-photo-3.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+      <figure class="g4"><img src="images/your-photo-4.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+      <figure class="g5"><img src="images/your-photo-5.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    </div>
+    -->
+  </div>
+</section>
+
+<div class="spine-wrap" id="spine6">
+  <svg viewBox="0 0 1200 70" preserveAspectRatio="none">
+    <path class="spine-path" d="M0,35 C60,35 80,10 120,10 C160,10 170,60 210,60 C260,60 270,20 320,20 L420,20 C450,20 460,45 490,45 C520,45 525,15 555,15 C580,15 585,50 610,50 L720,50 C760,50 770,25 800,25 C830,25 835,55 865,55 C900,55 905,20 940,20 L1050,20 C1090,20 1100,35 1140,35 L1200,35"/>
+  </svg>
+</div>
+
+<section class="track">
+  <div class="track-head">
+    <h2>Rainfall</h2>
+  </div>
+  <p class="track-desc">As a runner, you get out in all kinds of weather. This run takes place during a rain shower &mdash; splashing footsteps, rainfall, and a roll of thunder carry the song, along with an undercurrent of insects. This run takes place primarily on the levee in downtown Troy.</p>
+  <div class="pairing">
+    <div class="pairing-label">Pairing &mdash; Wild Turkey Rare Breed</div>
+    <div class="pairing-note">High proof, warming, a little bit of a jolt &mdash; basically what you want in hand right after getting caught in a downpour.</div>
+  </div>
+  <div class="layers">
+    <span>downtown Troy · the levee</span>
+    <span>rain</span>
+    <span>splashing footsteps</span>
+    <span>thunder</span>
+    <span>insects</span>
+  </div>
+  <!--
+    PHOTOS: to add photos here, uncomment this block and:
+    1. Put your image files in the /images folder next to this index.html
+    2. Replace "images/your-photo.jpg" with your actual filename
+    3. Replace the alt text (for screen readers) and the short caption
+    4. Use 3-5 photos - copy the <figure> line to add more, delete to use fewer
+
+  <div class="gallery">
+    <figure class="g1"><img src="images/your-photo-1.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g2"><img src="images/your-photo-2.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g3"><img src="images/your-photo-3.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g4"><img src="images/your-photo-4.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+    <figure class="g5"><img src="images/your-photo-5.jpg" alt="Describe the photo"><figcaption>short caption</figcaption></figure>
+  </div>
+  -->
+</section>
+
+<section class="about">
+  <div>
+    <h3>Deadly Orange Socks</h3>
+    <p>Deadly Orange Socks is the recording project of Brian, a distance runner in Troy, Ohio, who's spent years running trails, roads, and whatever surface and weather showed up that day, and started wondering what it would all sound like as music. Every layer in every track comes from a phone recording made mid-run &mdash; footsteps, heartbeat, whatever the run happened to bring. The photos on this page came off that same phone, on those same runs.</p>
+  </div>
+  <div>
+    <h3>Behind the Sound</h3>
+    <p>Behind the Sound is a music interview show about the creative process &mdash; casual, conversational conversations with musicians about how the work actually gets made. Journeys is presented by the show, but stands as its own project.</p>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="eyebrow">Journeys: Ohio</div>
+    <div class="name">Deadly Orange Socks</div>
+  </div>
+  <div class="foot-links">
+    <a href="#">Behind the Sound</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Reveal contour lines on scroll
+  const spines = document.querySelectorAll('.spine-wrap');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in-view'); }
+    });
+  }, {threshold:0.4});
+  spines.forEach(s=>io.observe(s));
+
+  // Generate a simple static waveform placeholder
+  const wf = document.getElementById('wf');
+  const bars = 60;
+  let x = 0;
+  const gap = 400/bars;
+  let seed = 7;
+  function rnd(){ seed = (seed*9301+49297)%233280; return seed/233280; }
+  for(let i=0;i<bars;i++){
+    const h = 6 + rnd()*32;
+    const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x', x);
+    rect.setAttribute('y', (44-h)/2);
+    rect.setAttribute('width', gap*0.55);
+    rect.setAttribute('height', h);
+    wf.appendChild(rect);
+    x += gap;
+  }
+</script>
+
+</body>
+</html>
