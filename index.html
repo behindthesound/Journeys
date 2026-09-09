@@ -748,6 +748,43 @@
 </script>
 <style>
   /* --- HERO LAYOUT ADJUSTMENTS --- */
+   /* --- HERO LAYOUT ADJUSTMENTS --- */
+  
+  .hero {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: flex-start !important; 
+    justify-content: flex-end !important;  
+    overflow: visible !important;      
+    padding-left: 10% !important;        
+    height: 80vh !important;             
+  }
+
+  .hero-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important; 
+    overflow: visible !important;
+    width: auto !important;
+  }
+
+  /* Fixes the text placement so it sits beautifully on top */
+  .eyebrow {
+    display: block !important;
+    margin-bottom: 0.75rem !important;  /* Creates space between text and logo */
+    order: 1 !important;                 /* Forces text to be first */
+  }
+
+  .hero-logo { 
+    display: block !important; 
+    width: 100% !important; 
+    max-width: 320px !important;        
+    height: auto !important; 
+    margin: 0 0 1.5rem 0 !important;    
+    border-radius: 14px !important; 
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5) !important; 
+    order: 2 !important;                 /* Forces logo to sit cleanly under text */
+  }
   
   /* Align the entire container to the left side */
   .hero {
