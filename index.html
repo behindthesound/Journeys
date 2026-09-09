@@ -768,27 +768,28 @@
     width: auto !important;
   }
 
-  /* Shrink the logo size and fix margins */
-  .hero-logo { 
-    display: block !important; 
-    width: 100% !important; 
-    max-width: 320px !important;        /* Shrank this down from 560px so it doesn't overpower the screen */
-    height: auto !important; 
-    margin: 0 0 1.5rem 0 !important;    /* Removes global margins and only adds space at the bottom */
-    border-radius: 14px !important; 
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5) !important; 
+ /* --- Shrink the logo size and fix margins --- */
+.hero-logo { 
+  display: block !important; 
+  width: 100% !important; 
+  max-width: 320px !important;       
+  height: auto !important; 
+  margin: 0 0 1.5rem 0 !important;    
+  border-radius: 14px !important; 
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5) !important; 
+}
+
+/* --- MOBILE FIXES --- */
+@media screen and (max-width: 768px) {
+  .hero {
+    padding-left: 24px !important; /* Shrinks the side gap so the logo has room to grow */
   }
- /* --- MOBILE FIXES --- */
-  /* This code ONLY applies to screens that are 768px wide or smaller (phones and small tablets) */
-  @media screen and (max-width: 768px) {
-    .hero {
-      padding-left: 24px !important; /* Shrinks the side gap so the logo has room to grow */
-    }
-    
-    .hero-logo {
-      max-width: 1060px !important;  /* Bumps the size up so it looks prominent on a phone screen */
-    }
+  
+  .hero-logo {
+    max-width: 220px !important;  /* Balanced prominent size for a phone screen */
   }
+}
+
 </style>
 </body>
 </html>
