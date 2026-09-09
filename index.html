@@ -779,16 +779,17 @@
   box-shadow: 0 20px 60px rgba(0,0,0,0.5) !important; 
 }
 
-/* --- MOBILE FIXES --- */
-@media screen and (max-width: 768px) {
-  .hero {
-    padding-left: 24px !important; /* Shrinks the side gap so the logo has room to grow */
+  /* --- MOBILE FIXES --- */
+  @media screen and (max-width: 768px) {
+    .hero {
+      padding-left: 20px !important; 
+    }
+    
+    .hero-logo {
+      max-width: 65% !important;  /* Switch from pixels to a fluid percentage of the phone screen */
+      width: 65% !important;
+    }
   }
-  
-  .hero-logo {
-    max-width: 220px !important;  /* Balanced prominent size for a phone screen */
-  }
-}
 
 </style>
 </body>
