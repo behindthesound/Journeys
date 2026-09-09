@@ -747,31 +747,39 @@
   }
 </script>
 <style>
-.hero {
-  display: flex !important;
-  flex-direction: column !important; 
-  align-items: center !important;    
-  justify-content: center !important;
-  overflow: visible !important;      
-}
+  /* --- HERO LAYOUT ADJUSTMENTS --- */
+  
+  /* Align the entire container to the left side */
+  .hero {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: flex-start !important; /* Moves items from center to the left side */
+    justify-content: flex-end !important;  /* Pushes items toward the bottom */
+    overflow: visible !important;      
+    padding-left: 10% !important;        /* Gives breathing room from the very edge of the screen */
+    height: 80vh !important;             /* Adjusts height to keep items in view */
+  }
 
-.hero-content {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  overflow: visible !important;
-  width: 100% !important;
-}
+  /* Make sure the content box aligns left too */
+  .hero-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important; /* Forces items inside to left-align */
+    overflow: visible !important;
+    width: auto !important;
+  }
 
-.hero-logo { 
-  display: block !important; 
-  width: 100% !important; 
-  max-width: 560px !important; 
-  height: auto !important; 
-  margin: 2rem auto !important;      
-  border-radius: 14px !important; 
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5) !important; 
-}
+  /* Shrink the logo size and fix margins */
+  .hero-logo { 
+    display: block !important; 
+    width: 100% !important; 
+    max-width: 320px !important;        /* Shrank this down from 560px so it doesn't overpower the screen */
+    height: auto !important; 
+    margin: 0 0 1.5rem 0 !important;    /* Removes global margins and only adds space at the bottom */
+    border-radius: 14px !important; 
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5) !important; 
+  }
+
 </style>
 </body>
 </html>
