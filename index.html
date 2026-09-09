@@ -779,15 +779,33 @@
   box-shadow: 0 20px 60px rgba(0,0,0,0.5) !important; 
 }
 
-  /* --- MOBILE FIXES --- */
+    /* --- MOBILE FIXES --- */
   @media screen and (max-width: 768px) {
+    /* 1. Center the content box over the background image on phones */
     .hero {
-      padding-left: 20px !important; 
+      padding-left: 0 !important;          /* Remove the side gap so we can center perfectly */
+      justify-content: center !important;  /* Center the elements vertically on the screen */
+      align-items: center !important;      /* Center the elements horizontally */
+      height: 90vh !important;             /* Give it plenty of vertical screen space */
+    }
+
+    /* 2. Open up the container width */
+    .hero-content {
+      width: 100% !important;
+      max-width: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;      /* Center everything inside the container */
+      justify-content: center !important;
     }
     
+    /* 3. Make the logo crisp, bold, and perfectly sized for a mobile screen */
     .hero-logo {
-      max-width: 65% !important;  /* Switch from pixels to a fluid percentage of the phone screen */
-      width: 65% !important;
+      width: 75% !important;               /* Occupies 75% of the phone's screen width */
+      max-width: 280px !important;         /* A healthy, readable size limit for modern phones */
+      margin: 0 auto !important;           /* Perfect centering alignment */
+      border-radius: 12px !important; 
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6); /* Slightly sharper shadow for mobile clarity */
     }
   }
 
